@@ -1,0 +1,13 @@
+Test Started
+
+[TEST] 1. SmartMoneyScreener 테스트 시작...
+  - run_screening(max_stocks=3) 실행 중...
+  ✅ 스크리닝 성공: 2개 종목 발견
+    ticker               name
+0  A000000  MockStock_A000000
+1  A000000  MockStock_A000000
+
+  - generate_signals 실행 중...
+  ✅ 시그널 생성 성공: 2개 시그널
+  --> 첫번째 시그널: MockStock_A000000 (점수: 70)
+Test Complete.

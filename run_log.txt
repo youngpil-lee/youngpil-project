@@ -1,0 +1,252 @@
+2026-02-19 10:53:29,771 - INFO - 선택된 메뉴: 1 (자동 실행)
+2026-02-19 10:53:29,772 - INFO - 
+🔍 수급 스크리닝 시작...
+2026-02-19 10:53:31,510 - INFO - Mock Data Generating for KOSPI
+2026-02-19 10:53:31,539 - INFO - Mock Data Generating for KOSDAQ
+2026-02-19 10:53:31,544 - INFO - 
+✅ 스크리닝 완료! 8개 종목 분석됨
+2026-02-19 10:53:31,544 - INFO - 
+[상위 10개 종목]
+2026-02-19 10:53:31,545 - INFO - Error: 스크리닝 중 오류 발생 ("['code', 'score'] not in index")
+2026-02-19 10:54:25,336 - INFO - 선택된 메뉴: 1 (자동 실행)
+2026-02-19 10:54:25,338 - INFO - 
+🔍 수급 스크리닝 시작...
+2026-02-19 10:54:27,001 - INFO - Mock Data Generating for KOSPI
+2026-02-19 10:54:27,031 - INFO - Mock Data Generating for KOSDAQ
+2026-02-19 10:54:27,041 - INFO - 
+✅ 스크리닝 완료! 8개 종목 분석됨
+2026-02-19 10:54:27,042 - INFO - 
+[상위 10개 종목]
+2026-02-19 10:54:27,058 - INFO -  ticker              name  close  change_pct  foreign_buy   inst_buy
+A000000 MockStock_A000000  10000        10.0   5000000000 2000000000
+A000004 MockStock_A000004  70000         8.9   5000000000 2000000000
+A000002 MockStock_A000002  30000         7.5   5000000000 2000000000
+A000001 MockStock_A000001  20000         5.0   5000000000 2000000000
+A000000 MockStock_A000000  10000        10.0   5000000000 2000000000
+A000004 MockStock_A000004  70000         8.9   5000000000 2000000000
+A000002 MockStock_A000002  30000         7.5   5000000000 2000000000
+A000001 MockStock_A000001  20000         5.0   5000000000 2000000000
+2026-02-19 11:00:04,137 - INFO - 
+📈 백테스트 실행...
+2026-02-19 11:00:05,457 - INFO - 백테스트 시작: 2023-01-01 ~ 2023-12-31
+2026-02-19 11:00:05,486 - INFO - 백테스트 완료
+2026-02-19 11:00:17,605 - INFO - 선택된 메뉴: 5 (자동 실행)
+2026-02-19 11:00:17,606 - INFO - 
+📈 백테스트 실행...
+2026-02-19 11:00:18,549 - INFO - 백테스트 시작: 2023-01-01 ~ 2023-12-31
+2026-02-19 11:00:18,579 - INFO - 백테스트 완료
+2026-02-19 11:01:01,527 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:01:01,527 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:01:03,939 - INFO - {'outlook': 'Neutral', 'reason': 'LLM 미설정'}
+2026-02-19 11:02:37,684 - INFO - 선택된 메뉴: 2 (자동 실행)
+2026-02-19 11:02:37,688 - INFO - 
+📊 VCP 시그널 생성...
+2026-02-19 11:02:42,992 - INFO - Mock Data Generating for KOSPI
+2026-02-19 11:02:43,046 - INFO - Mock Data Generating for KOSDAQ
+2026-02-19 11:02:43,053 - INFO - ✅ 1차 스크리닝: 8개 종목 추출
+2026-02-19 11:02:43,118 - INFO - 
+✅ 8개 시그널 생성됨
+2026-02-19 11:02:43,119 - INFO - - [A000000] MockStock_A000000: 70점
+2026-02-19 11:02:43,119 - INFO - - [A000002] MockStock_A000002: 70점
+2026-02-19 11:02:43,119 - INFO - - [A000000] MockStock_A000000: 70점
+2026-02-19 11:02:43,120 - INFO - - [A000002] MockStock_A000002: 70점
+2026-02-19 11:02:43,120 - INFO - - [A000004] MockStock_A000004: 60점
+2026-02-19 11:02:44,162 - INFO - 선택된 메뉴: 3 (자동 실행)
+2026-02-19 11:02:44,163 - INFO - 
+🎯 종가베팅 V2 실행...
+2026-02-19 11:02:46,942 - INFO - Error running screener v2: cannot import name 'SignalConfig' from 'engine.models' (C:\Project\종가배팅\engine\models.py)
+2026-02-19 11:04:39,434 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:04:39,435 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:04:41,650 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:04:41,650 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:05:39,315 - INFO - 선택된 메뉴: 3 (자동 실행)
+2026-02-19 11:05:39,317 - INFO - 
+🎯 종가베팅 V2 실행...
+2026-02-19 11:05:45,056 - INFO - Error running screener v2: cannot import name 'SignalConfig' from 'engine.models' (C:\Project\종가배팅\engine\models.py)
+2026-02-19 11:07:29,512 - INFO - 선택된 메뉴: 3 (자동 실행)
+2026-02-19 11:07:29,513 - INFO - 
+🎯 종가베팅 V2 실행...
+2026-02-19 11:07:32,490 - INFO - Mock Data Generating for KOSPI
+2026-02-19 11:07:32,533 - INFO - Mock Data Generating for KOSDAQ
+2026-02-19 11:07:32,550 - INFO - 
+✅ V2 스크리닝 완료! 0개 시그널
+2026-02-19 11:08:15,090 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:08:15,092 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:08:18,299 - INFO - {'score': 0, 'reason': 'LLM 설정 미비 또는 뉴스 데이터 없음'}
+2026-02-19 11:14:27,544 - INFO - 선택된 메뉴: 1 (자동 실행)
+2026-02-19 11:14:27,545 - INFO - 
+🔍 수급 스크리닝 시작...
+2026-02-19 11:14:41,021 - INFO - 
+✅ 스크리닝 완료! 9개 종목 분석됨
+2026-02-19 11:14:41,021 - INFO - 
+[상위 10개 종목]
+2026-02-19 11:14:41,046 - INFO - ticker   name  close  change_pct  foreign_buy  inst_buy
+071050 한국금융지주 289750       12.52            0         0
+009150   삼성전기 345750       11.71            0         0
+014680  한솔케미칼 324750        7.36            0         0
+087010    펩트론 288000       18.03            0         0
+052670  제일바이오 405000       13.76            0         0
+310210   보로노이 231500        8.94            0         0
+196170   알테오젠 406000        6.28            0         0
+140860 파크시스템스 271000        5.45            0         0
+357780   솔브레인 418500        5.15            0         0
+2026-02-19 11:14:57,599 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:14:57,600 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:15:03,367 - INFO - {'score': 0, 'reason': 'LLM 설정 미비 또는 뉴스 데이터 없음'}
+2026-02-19 11:51:01,884 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:51:01,886 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:51:23,800 - INFO - {'outlook': 'Error', 'reason': '404 models/gemini-2.0-flash-exp is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.'}
+2026-02-19 11:52:32,195 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:52:32,196 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:52:42,787 - INFO - {'outlook': 'Error', 'reason': '404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.'}
+2026-02-19 11:53:16,470 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 11:53:16,470 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 11:53:32,048 - INFO - {'outlook': 'Bullish', 'summary': '금일 코스피와 코스닥 시장은 각각 2.88%, 4.39%의 높은 상승률을 기록하며 매우 강력한 매수 심리를 보여주었습니다. 특히 성장주 중심의 코스닥 시장이 두드러진 강세를 보였으며, 이는 그동안 눌려있던 저가 매수세 유입 및 기술적 반등의 영향으로 풀이됩니다. 현재 환율은 1,451.20원으로 다소 높은 수준을 유지하고 있으나, 시장의 단기적인 강한 상승 모멘텀이 이를 압도하는 모습입니다.', 'strategy': '강한 상승세에도 불구하고, 단기 급등에 따른 차익 실현 가능성을 경계해야 합니다. 현재는 무리한 추격 매수보다는 시장의 흐름을 관망하며, 향후 조정 시점을 활용한 우량주 중심의 저점 분할 매수 전략이 바람직합니다. 기존 투자자는 포트폴리오의 일정 부분 현금 비중을 유지하며 시장의 변동성에 대비하고, 아직 구체화되지 않은 시장 주요 뉴스 및 환율 동향을 지속적으로 모니터링할 필요가 있습니다.'}
+2026-02-19 12:01:52,452 - INFO - 
+📊 VCP 시그널 생성...
+2026-02-19 12:01:52,461 - INFO - Error: 시그널 생성 중 오류 발생 (No module named 'pandas')
+2026-02-19 12:02:17,292 - INFO - 선택된 메뉴: 2 (자동 실행)
+2026-02-19 12:02:17,294 - INFO - 
+📊 VCP 시그널 생성...
+2026-02-19 12:02:17,333 - INFO - Error: 시그널 생성 중 오류 발생 (No module named 'pandas')
+2026-02-19 12:02:25,226 - INFO - 선택된 메뉴: 2 (자동 실행)
+2026-02-19 12:02:25,227 - INFO - 
+📊 VCP 시그널 생성...
+2026-02-19 12:02:25,228 - INFO - Error: 시그널 생성 중 오류 발생 (No module named 'pandas')
+2026-02-19 12:04:55,342 - INFO - 선택된 메뉴: 2 (자동 실행)
+2026-02-19 12:04:55,343 - INFO - 
+📊 VCP 시그널 생성...
+2026-02-19 12:04:55,354 - INFO - Error: 시그널 생성 중 오류 발생 (No module named 'pandas')
+2026-02-19 12:06:15,889 - INFO - 선택된 메뉴: 2 (자동 실행)
+2026-02-19 12:06:16,224 - INFO - 
+📊 VCP 시그널 생성...
+2026-02-19 12:06:16,532 - INFO - Error: 시그널 생성 중 오류 발생 (No module named 'pandas')
+2026-02-19 12:11:34,339 - INFO - 선택된 메뉴: 2 (자동 실행)
+2026-02-19 12:11:34,340 - INFO - 
+📊 VCP 시그널 생성...
+2026-02-19 12:12:18,963 - INFO - ✅ 1차 스크리닝: 13개 종목 추출
+2026-02-19 12:12:25,846 - ERROR - Failed to get ticker '014680.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:25,941 - ERROR - Failed to get ticker '071050.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:26,021 - ERROR - Failed to get ticker '009540.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:26,100 - ERROR - Failed to get ticker '009150.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:26,187 - ERROR - Failed to get ticker '267250.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:26,270 - ERROR - Failed to get ticker '278470.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:26,351 - ERROR - Failed to get ticker '087010.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:26,433 - ERROR - Failed to get ticker '052670.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:26,513 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,513 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,513 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,513 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,513 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,513 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,513 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,514 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,514 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,514 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,514 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,514 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,515 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:26,515 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,515 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,515 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,515 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,515 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,516 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,516 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,516 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,516 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,516 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:26,543 - ERROR - ['014680.KS']: SSLError('Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\\Users\\죽플\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\certifi\\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.')
+2026-02-19 12:12:27,179 - ERROR - Failed to get ticker '140860.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:27,261 - ERROR - Failed to get ticker '310210.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:27,342 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:27,342 - ERROR - ['140860.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:27,350 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:27,351 - ERROR - ['140860.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:27,543 - ERROR - Failed to get ticker '196170.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:27,623 - ERROR - Failed to get ticker '145020.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:27,704 - ERROR - Failed to get ticker '052670.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:27,801 - ERROR - Failed to get ticker '014680.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:27,882 - ERROR - Failed to get ticker '267250.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:27,964 - ERROR - Failed to get ticker '071050.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:28,047 - ERROR - Failed to get ticker '145020.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:28,128 - ERROR - Failed to get ticker '310210.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:28,204 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,204 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,209 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,209 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,209 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,209 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,217 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,210 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,210 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,210 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,227 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,212 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,214 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,234 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,215 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,209 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,222 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,211 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,231 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,214 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,240 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,248 - ERROR - ['196170.KS']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,859 - ERROR - Failed to get ticker '196170.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:28,944 - ERROR - 
+1 Failed download:
+2026-02-19 12:12:28,944 - ERROR - ['196170.KQ']: TypeError("'NoneType' object is not subscriptable")
+2026-02-19 12:12:28,959 - INFO - 
+✅ 3개 시그널 생성됨
+2026-02-19 12:12:28,960 - INFO - - [014680] 한솔케미칼: 50점
+2026-02-19 12:12:28,960 - INFO - - [196170] 알테오젠: 50점
+2026-02-19 12:12:28,960 - INFO - - [357780] 솔브레인: 50점
+2026-02-19 12:12:29,032 - ERROR - Failed to get ticker '009540.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:29,114 - ERROR - Failed to get ticker '278470.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:29,192 - ERROR - Failed to get ticker '087010.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:29,274 - ERROR - Failed to get ticker '140860.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:29,354 - ERROR - Failed to get ticker '009150.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:29,436 - ERROR - Failed to get ticker '357780.KS' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:12:29,518 - ERROR - Failed to get ticker '357780.KQ' reason: Failed to perform, curl: (77) error setting certificate verify locations:  CAfile: C:\Users\죽플\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\certifi\cacert.pem CApath: none. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-02-19 12:13:33,471 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 12:13:33,472 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 12:14:04,904 - INFO - Error: name 'List' is not defined
+2026-02-19 12:15:56,780 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-19 12:15:56,781 - INFO - 
+🤖 AI 분석 시작...
+2026-02-19 12:16:05,603 - INFO - Error: name 'List' is not defined
