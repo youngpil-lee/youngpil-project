@@ -44,7 +44,7 @@ class SmartMoneyScreener:
             # 3. 데이터 결합
             results = []
             for stock, supply in zip(all_stocks, supplies):
-                if supply:
+                if supply and hasattr(supply, 'foreign_buy_5d') and hasattr(supply, 'inst_buy_5d'):
                     row = {
                         "ticker": stock.code,
                         "name": stock.name,

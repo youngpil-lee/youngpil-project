@@ -14,6 +14,16 @@ except ImportError:
     krx_stock = None
     print("[Alert] pykrx 모듈이 없습니다. Mock 모드로 동작합니다.")
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+import ssl
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
 import logging
 import random # Mock data generation
 
@@ -368,11 +378,18 @@ class KRXCollector:
         df = await loop.run_in_executor(None, lambda: krx_stock.get_market_investor_net_purchase_by_date_by_ticker(start_date, end_date, code))
         df = df.tail(5)
         
+        if df is None or df.empty:
+            return None
+            
         class SupplyInfo: pass
         supply = SupplyInfo()
-        supply.foreign_buy_5d = int(df['외국인'].sum())
-        supply.inst_buy_5d = int(df['기관합계'].sum())
-        return supply
+        try:
+            supply.foreign_buy_5d = int(df['외국인'].sum())
+            supply.inst_buy_5d = int(df['기관합계'].sum())
+            return supply
+        except Exception as e:
+            logger.error(f"수급 데이터 파싱 실패 ({code}): {e}")
+            return None
 
     async def _get_supply_data_naver(self, code: str):
         import requests
