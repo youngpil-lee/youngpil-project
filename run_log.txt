@@ -591,3 +591,11 @@ A000001 MockStock_A000001  20000         5.0   5000000000 2000000000
 2026-02-20 14:10:49,924 - ERROR - ['009540.KQ']: TypeError("'NoneType' object is not subscriptable")
 2026-02-20 14:10:52,093 - INFO - 
 ✅ V2 스크리닝 완료! 0개 시그널
+2026-02-20 14:30:07,523 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-20 14:30:07,524 - INFO - 
+🤖 AI 분석 시작...
+2026-02-20 14:30:09,396 - INFO - Error: name 'List' is not defined
+2026-02-20 15:01:04,647 - INFO - 선택된 메뉴: 4 (자동 실행)
+2026-02-20 15:01:04,649 - INFO - 
+🤖 AI 분석 시작...
+2026-02-20 15:01:23,003 - INFO - {'outlook': 'Error', 'reason': '404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.'}

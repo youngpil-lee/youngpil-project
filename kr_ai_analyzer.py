@@ -5,7 +5,7 @@ KR Market AI 분석기 (Wrapper)
 """
 
 import asyncio
-from typing import Dict, Any
+from typing import Dict, Any, List
 import logging
 
 try:
