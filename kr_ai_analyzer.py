@@ -36,10 +36,12 @@ class NaverFallbackStock:
     def get_market_ticker_name(code):
         try:
             import requests
+            import urllib3
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             from bs4 import BeautifulSoup
             url = f"https://finance.naver.com/item/main.naver?code={code}"
-            headers = {'User-Agent': 'Mozilla/5.0'}
-            resp = requests.get(url, headers=headers)
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+            resp = requests.get(url, headers=headers, verify=False)
             soup = BeautifulSoup(resp.content, "html.parser")
             name = soup.select_one(".wrap_company h2 a").text.strip()
             return name

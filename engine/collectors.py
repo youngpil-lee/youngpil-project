@@ -72,7 +72,18 @@ class KRXCollector:
 
     async def _get_top_gainers_pykrx(self, market: str, top_n: int) -> List[StockData]:
         loop = asyncio.get_event_loop()
-        df = await loop.run_in_executor(None, lambda: krx_stock.get_market_ohlcv(self.today, market=market))
+        df = pd.DataFrame()
+        for i in range(10):
+            target_date = (datetime.strptime(self.today, "%Y%m%d") - timedelta(days=i)).strftime("%Y%m%d")
+            _df = await loop.run_in_executor(None, lambda d=target_date: krx_stock.get_market_ohlcv(d, market=market))
+            if not _df.empty and len(_df) > 50 and _df['거래대금'].sum() > 0:
+                self.today = target_date  # 기준일 업데이트
+                df = _df
+                break
+        
+        if df.empty:
+            return []
+
         
         # 필터링 로직 (기존 코드 재사용)
         df = df[df['등락률'] >= self.config.min_change_pct]
@@ -110,7 +121,8 @@ class KRXCollector:
             # sosok: 0=KOSPI, 1=KOSDAQ
             sosok = 0 if market == "KOSPI" else 1
             url = f"https://finance.naver.com/sise/sise_rise.naver?sosok={sosok}"
-            resp = requests.get(url)
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+            resp = requests.get(url, headers=headers, verify=False)
             soup = BeautifulSoup(resp.content, "html.parser")
             
             items = []
@@ -205,7 +217,8 @@ class KRXCollector:
         
         def crawl():
             url = f"https://finance.naver.com/item/main.naver?code={code}"
-            resp = requests.get(url)
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+            resp = requests.get(url, headers=headers, verify=False)
             soup = BeautifulSoup(resp.content, "html.parser")
             
             # 시가총액
@@ -398,7 +411,8 @@ class KRXCollector:
         
         def crawl():
             url = f"https://finance.naver.com/item/frgn_man.naver?code={code}"
-            resp = requests.get(url)
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+            resp = requests.get(url, headers=headers, verify=False)
             soup = BeautifulSoup(resp.content, "html.parser")
             
             # 테이블 파싱 (일별매매동향 중 상단 5개 행)
@@ -467,9 +481,12 @@ class EnhancedNewsCollector:
             loop = asyncio.get_event_loop()
             
             def fetch_news():
-                url = f"https://finance.naver.com/item/news_news.naver?code={code}"
-                headers = {'User-Agent': 'Mozilla/5.0'}
-                response = requests.get(url, headers=headers)
+                url = f"https://finance.naver.com/item/news_news.naver?code={code}&page=&sm=&clusterId="
+                headers = {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Referer': f'https://finance.naver.com/item/news.naver?code={code}'
+                }
+                response = requests.get(url, headers=headers, verify=False)
                 soup = BeautifulSoup(response.content, 'html.parser')
                 
                 news_items = []
