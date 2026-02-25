@@ -1,10 +1,11 @@
 from kr_ai_analyzer import KrAiAnalyzer
 
-def main():
+def test():
     analyzer = KrAiAnalyzer()
-    print("Testing analyze_stock...")
-    result = analyzer.analyze_stock("005930")
-    print("Result:", result)
+    print("Testing Market Outlook...")
+    result = analyzer.analyze_market_outlook()
+    print("\n[RESULT]")
+    print(result)
 
 if __name__ == "__main__":
-    main()
+    test()

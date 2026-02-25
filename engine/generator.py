@@ -67,7 +67,7 @@ class SignalGenerator:
         self,
         target_date: date = None,
         markets: List[str] = None,
-        top_n: int = 30,
+        top_n: int = 15,
     ) -> List[Signal]:
         """
         시그널 생성
@@ -124,6 +124,11 @@ class SignalGenerator:
     ) -> Optional[Signal]:
         """개별 종목 분석"""
         try:
+            # === [PRE-FILTER] AI 분석 전 기본 조건 확인 ===
+            # 거래대금 500억 미만 또는 등락률 5% 미만은 스크리닝 제외 (B등급 미만 후보)
+            if stock.trading_value < 50_000_000_000 or stock.change_pct < 5.0:
+                return None
+
             # 1. 상세 정보 조회 (이미 top_gainers에서 대부분 가져왔으나 52주 고가 등 보완)
             detail = await self._collector.get_stock_detail(stock.code)
             if detail:
@@ -141,14 +146,21 @@ class SignalGenerator:
             # 4. LLM 뉴스 분석 (Rate Limit 방지 Sleep)
             llm_result = None
             if news_list and self.llm_analyzer.model:
-                # Gemini Rate Limit 방지 (3.0 유료 모델 테스트: 2초)
-                await asyncio.sleep(2)
-                
-                print(f"    [LLM] {stock.name} 뉴스 분석 중(Analyzing)...")
-                news_dicts = [{"title": n.title, "summary": n.summary} for n in news_list]
-                llm_result = await self.llm_analyzer.analyze_news_sentiment(stock.name, news_dicts)
-                if llm_result:
-                   print(f"      -> 점수(Score): {llm_result.get('score')}, 사유(Reason): {llm_result.get('reason')}")
+                try:
+                    # Gemini Rate Limit 방지 (최소 1초 대기)
+                    await asyncio.sleep(1.2)
+                    
+                    print(f"    [LLM] {stock.name} 분석 중...")
+                    news_dicts = [{"title": n.title, "summary": n.summary} for n in news_list]
+                    llm_result = await self.llm_analyzer.analyze_news_sentiment(stock.name, news_dicts)
+                    
+                    # 에러 결과인 경우 로깅
+                    if llm_result and (llm_result.get("outlook") == "Error" or "error" in llm_result):
+                         print(f"      ⚠️ AI 응답 오류: {llm_result.get('reason')}")
+                         llm_result = None
+                except Exception as ai_e:
+                    print(f"      ⚠️ AI 호출 실패: {ai_e}")
+                    llm_result = None
 
             # 5. 수급 데이터 조회 (CSV에서 로드, 5일 누적)
             supply = await self._collector.get_supply_data(stock.code)

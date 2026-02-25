@@ -387,17 +387,20 @@ class KRXCollector:
     async def _get_supply_data_pykrx(self, code: str):
         loop = asyncio.get_event_loop()
         end_date = self.today
-        start_date = (datetime.now() - timedelta(days=7)).strftime("%Y%m%d")
-        df = await loop.run_in_executor(None, lambda: krx_stock.get_market_investor_net_purchase_by_date_by_ticker(start_date, end_date, code))
-        df = df.tail(5)
+        start_date = (datetime.strptime(end_date, "%Y%m%d") - timedelta(days=20)).strftime("%Y%m%d")
+        df = await loop.run_in_executor(None, lambda: krx_stock.get_market_trading_value_by_date(start_date, end_date, code))
         
         if df is None or df.empty:
             return None
             
+        df = df.tail(5)
+        
         class SupplyInfo: pass
         supply = SupplyInfo()
         try:
-            supply.foreign_buy_5d = int(df['외국인'].sum())
+            # pykrx의 get_market_trading_value_by_date는 '외국인합계', '기관합계' 컬럼을 가짐
+            target_foreign = '외국인합계' if '외국인합계' in df.columns else '외국인'
+            supply.foreign_buy_5d = int(df[target_foreign].sum())
             supply.inst_buy_5d = int(df['기관합계'].sum())
             return supply
         except Exception as e:

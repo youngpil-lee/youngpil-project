@@ -1,0 +1,47 @@
+# 종가배팅 시스템 분석 보고서
+
+이 프로젝트는 한국 주식 시장의 수급과 기술적 지표를 분석하여 최적의 종가 배팅 타이밍을 포착하고, AI 기반의 리포트를 제공하는 포괄적인 주식 분석 시스템입니다.
+
+## 1. 시스템 아키텍처 (Architecture)
+
+전체 시스템은 다음과 같은 3계층 구조로 이루어져 있습니다.
+
+- **데이터 계층 (Data Layer)**: [pykrx](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/collectors.py#269-281), `Naver Finance`, `YFinance` 등 다양한 채널을 통해 주가, 뉴스, 외인/기관 수급 데이터를 실시간 또는 과거 데이터를 수집합니다. ([engine/collectors.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/collectors.py))
+- **분석 엔진 계층 (Analysis Engine Layer)**: 수집된 데이터를 바탕으로 점수를 산출(`Score`)하고, VCP(변동성 축소) 패턴을 분석하며, Gemini AI를 활용해 정성적인 분석을 수행합니다. ([engine/generator.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/generator.py), [engine/scorer.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/scorer.py), [engine/llm_analyzer.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/llm_analyzer.py))
+- **인터페이스 계층 (Interface Layer)**: CLI 명령줄 인터페이스와 Flask/Vanilla JS 기반의 웹 대시보드를 제공하여 사용자가 분석 결과를 쉽게 확인할 수 있도록 합니다. ([run.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/run.py), `app/`, `frontend/`)
+
+## 2. 주요 기능 (Key Features)
+
+| 기능 | 설명 | 관련 파일 |
+| :--- | :--- | :--- |
+| **수급 스크리닝** | 외국인/기관의 강한 매집이 발생한 종목을 실시간 탐지 | [screener.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/screener.py) |
+| **VCP 시그널 생성** | 변동성이 축소되며 급등 가능성이 높은 차트 패턴 발굴 | [engine/generator.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/generator.py) |
+| **AI 종목 분석** | Gemini AI를 연동하여 종목 뉴스 및 수급 리포트 생성 | [kr_ai_analyzer.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/kr_ai_analyzer.py) |
+| **자금 관리** | 시그널 발생 시 적정 투입 금액 및 손절가/익절가 계산 | [engine/position_sizer.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/position_sizer.py) |
+| **백테스트** | 과거 데이터를 기반으로 매매 전략의 유효성 검증 | [engine/backtester.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/backtester.py) |
+
+## 3. 핵심 로직 흐름 (Data Flow)
+
+1. **Initialize**: [config.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/config.py) 및 [.env](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/.env) 파일에서 설정값과 API Key를 로드합니다.
+2. **Collect**: 대상 종목(상승률 상위 등)의 주가 정보와 외인/기관 수급 데이터를 수집합니다.
+3. **Analyze**:
+    - **Scoring**: 수급 비중, 거래량 변화 등을 점수화합니다.
+    - **Pattern**: VCP 패턴 분석을 통해 차트의 안정성을 확인합니다.
+    - **Positioning**: 리스크 관리를 위한 매수 수량을 결정합니다.
+4. **AI Report**: (옵션) 수집된 정보와 뉴스를 AI에게 전달하여 분석 리포트를 작성합니다.
+5. **Output**: CLI 로그 출력 또는 웹 대시보드 JSON 데이터로 전달합니다.
+
+## 4. 실행 가이드 (Usage)
+
+### 환경 요구 사항
+- **Python**: 3.11 또는 3.12 권장 (3.14에서는 일부 라이브러리 호환성 문제 있음)
+- **주요 라이브러리**: `pandas`, [pykrx](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/collectors.py#269-281), `google-generativeai`, `python-dotenv`, `flask`
+
+### 실행 방법
+- **메인 메뉴**: `python run.py` (수급 스크리닝, VCP 시그널 등 선택 실행)
+- **웹 대시보드**: `python flask_app.py` 실행 후 브라우저 접속
+- **로직 테스트**: `python test_mock.py` (실제 거래소 데이터 없이 로직 검증 가능)
+
+## 5. 분석 의견 (Observation)
+- 이 프로그램은 단순한 크롤러를 넘어 **자금 관리(Position Sizing)**와 **AI 정성 분석**이 결합된 완성도 높은 시스템입니다.
+- 특히 [engine/collectors.py](file:///c:/Project/%EC%A2%85%EA%B0%80%EB%B0%B0%ED%8C%85/engine/collectors.py)에서 볼 수 있듯이 데이터 소스(Pykrx -> Naver -> Mock)에 대한 **Fallback(대체 수단)** 로직이 잘 설계되어 있어 네트워크나 환경 이슈에 견고합니다.

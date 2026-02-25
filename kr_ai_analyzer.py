@@ -93,15 +93,26 @@ class KrAiAnalyzer:
             if news_list:
                 news_dicts = [{"title": n.title, "summary": n.summary} for n in news_list]
             
-            # 3. LLM 분석
-            print("   🧠 Gemini AI가 분석 중입니다...")
-            result = await self.llm.analyze_news_sentiment(name, news_dicts)
-            return result
+            try:
+                ai_result = await self.llm.analyze_news_sentiment(name, news_dicts)
+                if "error" in ai_result or ai_result.get("score") is None:
+                    # score가 없으면 에러로 간주 (llm_analyzer가 return {"score": 0, "reason": "..."}를 주기도 함)
+                    pass 
+                return ai_result
+            except Exception as e:
+                print(f"⚠️ [{code}] AI 분석 실패 (Fallback): {e}")
+                return {
+                    "score": 1,
+                    "reason": f"AI 분석 한도 초과로 인해 뉴스 데이터만 수집되었습니다. (사유: {str(e)[:50]})\n최근 뉴스 {len(news_dicts)}건이 발견되었습니다. 직접 확인을 권장합니다."
+                }
                 
         try:
             return asyncio.run(_process())
         except Exception as e:
-            return {"error": f"분석 중 오류 발생: {str(e)}"}
+            return {
+                "score": 0, 
+                "reason": f"시스템 오류가 발생했습니다: {str(e)}"
+            }
 
     def analyze_market_outlook(self) -> Dict:
         """
@@ -150,12 +161,29 @@ class KrAiAnalyzer:
                     "issues": "데이터 수집 실패, 일반적 시장 상황 가정"
                  }
             
-            return await self.llm.analyze_market(market_data)
+            try:
+                ai_result = await self.llm.analyze_market(market_data)
+                if "error" in ai_result or ai_result.get("outlook") == "Error":
+                    raise Exception(ai_result.get("reason", "Unknown AI Error"))
+                return ai_result
+            except Exception as e:
+                print(f"⚠️ AI 분석 실패 (Fallback 사용): {e}")
+                return {
+                    "outlook": "Neutral",
+                    "summary": f"현재 AI 서비스 호출이 원활하지 않습니다. (사유: {str(e)[:50]})\n시장 데이터: KOSPI {market_data.get('kospi')}, KOSDAQ {market_data.get('kosdaq')}",
+                    "strategy": "데이터 기반의 기술적 분석을 우선시하시기 바랍니다.",
+                    "reason": str(e)
+                }
 
         try:
             return asyncio.run(_process())
         except Exception as e:
-            return {"error": f"시장 분석 오류: {str(e)}"}
+            return {
+                "outlook": "Error", 
+                "summary": "시스템 오류가 발생했습니다.",
+                "strategy": "잠시 후 다시 시도해주세요.",
+                "reason": str(e)
+            }
 
     def analyze_user_portfolio(self, portfolio: List[Dict]) -> Dict:
         """

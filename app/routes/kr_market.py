@@ -7,8 +7,11 @@ import traceback
 from datetime import datetime, date
 import pandas as pd
 from flask import Blueprint, jsonify, request, current_app
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
 
 kr_bp = Blueprint('kr', __name__)
+executor = ThreadPoolExecutor(max_workers=4)
 
 
 @kr_bp.route('/market-status')
@@ -406,12 +409,130 @@ def kr_vcp_scan():
 def kr_update():
     """KR 데이터 업데이트"""
     try:
-        from scheduler import run_full_update
+        from scheduler import daily_job
         
-        result = run_full_update()
-        return jsonify(result)
+        # 비동기로 실행하거나, 여기선 간단히 실행 후 결과 반환
+        daily_job()
+        return jsonify({'status': 'success', 'message': 'Full update completed'})
     except Exception as e:
         traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+
+@kr_bp.route('/screening', methods=['POST'])
+def run_screening_api():
+    """수급 스크리닝 실행"""
+    try:
+        from screener import SmartMoneyScreener
+        screener = SmartMoneyScreener()
+        results = screener.run_screening(max_stocks=50)
+        
+        if results is not None:
+            return jsonify({
+                'status': 'success',
+                'count': len(results),
+                'data': results.to_dict(orient='records')
+            })
+        return jsonify({'status': 'empty', 'data': []})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@kr_bp.route('/vcp-signals', methods=['POST'])
+def run_vcp_signals_api():
+    """VCP 시그널 생성 실행 (Option 2)"""
+    try:
+        from screener import SmartMoneyScreener
+        screener = SmartMoneyScreener()
+        df = screener.run_screening(max_stocks=30)
+        
+        if df is not None and not df.empty:
+            signals = screener.generate_signals(df)
+            return jsonify({
+                'status': 'success',
+                'count': len(signals),
+                'signals': signals # [{ticker, name, score, ...}]
+            })
+        return jsonify({'status': 'empty', 'signals': []})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@kr_bp.route('/closing-bet-v2', methods=['POST'])
+def run_closing_bet_v2_api():
+    """종가베팅 V2 실행 (Option 3)"""
+    try:
+        from engine.generator import run_screener
+        import asyncio
+        
+        # run_screener는 async 함수이므로 동기 환경에서 실행
+        # flask에서 루프를 새로 만들거나 기존 루프 사용
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        result = loop.run_until_complete(run_screener())
+        loop.close()
+        
+        # result is a ScreenerResult object
+        signals_data = [s.to_dict() for s in result.signals]
+        
+        return jsonify({
+            'status': 'success',
+            'date': result.date.isoformat(),
+            'filtered_count': result.filtered_count,
+            'signals': signals_data
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+
+@kr_bp.route('/backtest/run', methods=['POST'])
+def run_backtest_api():
+    """백테스트 실행"""
+    try:
+        import run_backtest
+        # 백테스트는 시간이 걸릴 수 있으므로 로그 파일 등으로 결과 확인 유도하거나
+        # 여기서 실행 후 요약 결과 반환
+        run_backtest.main()
+        
+        perf_path = os.path.join('data', 'performance.json')
+        if os.path.exists(perf_path):
+            with open(perf_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return jsonify({'status': 'success', 'performance': data})
+            
+        return jsonify({'status': 'success', 'message': 'Backtest completed'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@kr_bp.route('/ai/analyze-market', methods=['POST'])
+def analyze_market_api():
+    """AI 시장 전망 분석 실행"""
+    try:
+        from kr_ai_analyzer import KrAiAnalyzer
+        analyzer = KrAiAnalyzer()
+        result = analyzer.analyze_market_outlook()
+        return jsonify({'status': 'success', 'analysis': result})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@kr_bp.route('/ai/analyze-stock', methods=['POST'])
+def analyze_stock_api():
+    """AI 개별 종목 분석 실행"""
+    try:
+        data = request.get_json() or {}
+        ticker = data.get('ticker')
+        if not ticker:
+            return jsonify({'error': 'Ticker is required'}), 400
+            
+        from kr_ai_analyzer import KrAiAnalyzer
+        analyzer = KrAiAnalyzer()
+        result = analyzer.analyze_stock(ticker)
+        return jsonify({'status': 'success', 'analysis': result})
+    except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 

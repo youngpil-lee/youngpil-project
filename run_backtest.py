@@ -90,5 +90,27 @@ def main():
         profit_color = "🔴" if t.profit_pct > 0 else "🔵"
         print(f"{t.exit_date} {profit_color} {t.name} ({t.ticker}): {t.profit_pct:.2f}% ({t.status})")
 
+    # 결과 저장 (UI 연동용)
+    import json
+    save_data = {
+        "summary": summary,
+        "equity_curve": engine.equity_curve,
+        "trades": [
+            {
+                "ticker": t.ticker,
+                "name": t.name,
+                "entry_date": t.entry_date,
+                "exit_date": t.exit_date,
+                "profit_pct": round(t.profit_pct, 2) if t.profit_pct is not None else 0,
+                "status": t.status
+            } for t in engine.history[-10:] # 최근 10건
+        ]
+    }
+    
+    os.makedirs('data', exist_ok=True)
+    with open(os.path.join('data', 'performance.json'), 'w', encoding='utf-8') as f:
+        json.dump(save_data, f, ensure_ascii=False, indent=2)
+    print(f"\n✅ 성과 데이터 저장 완료: data/performance.json")
+
 if __name__ == "__main__":
     main()
