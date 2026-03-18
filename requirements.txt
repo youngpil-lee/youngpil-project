@@ -1,0 +1,10 @@
+flask
+pandas
+pykrx
+google-generativeai
+python-dotenv
+yfinance
+requests
+numpy
+beautifulsoup4
+nest-asyncio
